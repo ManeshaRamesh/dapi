@@ -2,11 +2,11 @@
 Login using a postrequest.
 
 #### In order to this application, run the following commands in order: 
-npm install. 
+1. npm install. 
 
-npm run build
+2. npm run build
 
-npm run start
+3. npm run start
 
 
 #### On chrome navigate to https://localhost:3000/
