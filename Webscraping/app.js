@@ -93,10 +93,7 @@ const main = async () => {
     await page.goto(url, {waitUntil:'networkidle2'});
     Object.assign(global, {browser, page});
     await page.waitForSelector(Constants.USERNAME_SELECTOR); //waits for the html element to load
-    // console.log("HERE2");
-    // await page.click(Constants.USERNAME_SELECTOR);
-    // console.log("Entered username")
-    // await page.keyboard.type(Profile.username);
+
     await page.type(Constants.USERNAME_SELECTOR, Profile.username) //enter username in the input box
     // await page.screenshot({path: 'EnteredUsername.png'}); //to debug
     await page.waitForSelector(Constants.PASSWORD_SELECTOR); //waits for the password selector to load
