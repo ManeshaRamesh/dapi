@@ -1,0 +1,5 @@
+Things to do:
+1) How to encrypt using aesutil
+2) Learn watchify
+3) make the post request and work on decryption
+4) the issue is with generateauthkey

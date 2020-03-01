@@ -1,0 +1,52 @@
+body{
+    font-family: 'Roboto' ;
+    height: vh;
+
+}
+
+.main-container{
+    margin: 20%;
+}
+.main-container .container .login-wrapper{
+    width:50%;
+}
+.main-container .header {
+    margin: auto;
+    font-size: 2em;
+}
+
+.main-container .submit-button{
+    width: 100%;
+    background-color: #4841ee;
+    color: white;
+}
+
+.main-container .login-wrapper .fields{
+   margin-bottom: 2em;
+}
+.main-container .login-wrapper .fields input{
+    padding: 2em;
+}
+
+.main-container .login-wrapper .fields button{
+    padding: 1.5em;
+}
+
+.main-container .user-input{
+    border: none;
+    background-color:#efeeef ;
+}
+
+.incorrectcredentials{
+    color: red;
+    font-style: bold;
+
+}
+
+.loggedin {
+    background-color: black;
+    padding: 10%;
+    font-family: monospace;
+    color: white;
+    font-size: 1em;
+}
