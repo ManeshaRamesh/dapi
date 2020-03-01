@@ -3,7 +3,8 @@ Login using puppeteer
 
 #### How to run: 
  1. Open the terminal and navigate to the location of this folder
- 2. Run npm run start
+ 2. Run npm install
+ 3. Run npm run start
  
  
 #### NOTES: 
