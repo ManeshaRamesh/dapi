@@ -1,5 +1,12 @@
-##### Webscraping
+# Webscraping
 Login using puppeteer
+
+#### How to run: 
+ 1. Open the terminal and navigate to the location of this folder
+ 2. Run npm run start
+ 
+ 
+#### NOTES: 
 
 You may check if you have logged in by opening the loggedIn.png file. 
 
