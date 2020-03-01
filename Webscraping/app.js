@@ -84,7 +84,7 @@ const main = async () => {
 
   let url = 'https://online.adcb.com/ADCBIB/kdw#_frmLogin'; //the url where you login
   let browser = await puppeteer.launch(
-    {headless: false, slowMo: 1}
+    {headless: false, slowMo: 10}
   );//launches browser
   let page = await browser.newPage(); //page obejct
   page.on('console', msg => console.log('PAGE LOG:', msg.text())); //for print statements
@@ -106,11 +106,11 @@ const main = async () => {
     var hello = await page.evaluate(getVirtualKeyboardObject); //gets the ids and values from teh virtual keyboard
 
     var passwordCharArray = Profile.password.split(''); //converts the password input into a char array
-    console.log("array");
+    // console.log("array");
     for (var l = 0; l < passwordCharArray.length ; l++){
       if (passwordCharArray[l].toUpperCase() !== passwordCharArray[l].toLowerCase()){ //if it is a letter
         if (passwordCharArray[l] !== passwordCharArray[l].toUpperCase()){ //if not uppercase
-          console.log(passwordCharArray[l], "LOWERCASE")
+          // console.log(passwordCharArray[l], "LOWERCASE")
           if (Flag.CAPSLOCK){ //if capslock is on, turn it off and load teh keyboard again
             await page.waitForSelector(Constants.VIRTUAL_KEYBOARD.CAPSLOCK_SELECTOR,  { visible: true });
             await page.click(Constants.VIRTUAL_KEYBOARD.CAPSLOCK_SELECTOR); //click on capslock 
@@ -121,11 +121,11 @@ const main = async () => {
           //search for the selector that has the correct value
           for (var ele = 0; ele < hello.length ; ele++){ //search through object and find letter
             if (hello[ele].value === passwordCharArray[l]){
-              console.log("The selector: ", hello[ele].id,  hello[ele].value, passwordCharArray[l] );
+              // console.log("The selector: ", hello[ele].id,  hello[ele].value, passwordCharArray[l] );
               await page.waitForSelector('#frmLogin_vbox156810424052897',  { opacity: 1});
-              console.log("yes")
+              // console.log("yes")
               await page.waitForSelector('#'+hello[ele].id,  { visible: true });
-              console.log("yessss")
+              // console.log("yessss")
 
               await page.click('#'+hello[ele].id);
               break;
@@ -133,7 +133,7 @@ const main = async () => {
           }
         }
         else{ //if letter is upper case
-          console.log(passwordCharArray[l], "UPPERCASE")
+          // console.log(passwordCharArray[l], "UPPERCASE")
           if (!Flag.CAPSLOCK){
             await page.waitForSelector(Constants.VIRTUAL_KEYBOARD.CAPSLOCK_SELECTOR,  { visible: true });
             await page.click(Constants.VIRTUAL_KEYBOARD.CAPSLOCK_SELECTOR); //click on capslock 
@@ -144,7 +144,7 @@ const main = async () => {
           }
           for (var ele = 0; ele < hello.length ; ele++){ //search through object and find letter
             if (hello[ele].value === passwordCharArray[l]){
-              console.log("The selector: ", hello[ele].id,  hello[ele].value, passwordCharArray[l] );
+              // console.log("The selector: ", hello[ele].id,  hello[ele].value, passwordCharArray[l] );
               await page.waitForSelector('#frmLogin_vbox156810424052897',  { opacity: 1});
               await page.waitForSelector('#'+hello[ele].id,  { visible: true });
               await page.click('#'+hello[ele].id); //click on teh button once found
@@ -157,11 +157,11 @@ const main = async () => {
         }
     }
     else{
-      console.log(passwordCharArray[l], "SPECIAL CHARACTER")
+      // console.log(passwordCharArray[l], "SPECIAL CHARACTER")
 
       for (var ele = 0; ele < hello.length ; ele++){ //search through object and find letter
         if (hello[ele].value === passwordCharArray[l]){
-          console.log("The selector: ", hello[ele].id,  hello[ele].value, passwordCharArray[l] );
+          // console.log("The selector: ", hello[ele].id,  hello[ele].value, passwordCharArray[l] );
           await page.waitForSelector('#frmLogin_vbox156810424052897',  { opacity: 1});
           await page.waitForSelector('#'+hello[ele].id);
           await page.click('#'+hello[ele].id); //click on teh button once found
@@ -174,37 +174,17 @@ const main = async () => {
     }
  
     }
-
-    // await page.screenshot({path: 'EnteredPassword.png'});
-    // await page.waitForSelector(Constants.SUBMIT);
-    // console.log("here2")
-    // await page.evaluate(()=>{ console.log  ("Entered Password: ", document.getElementById('frmLogin_txtPwd').value);});
-
     await page.waitForSelector(Constants.SUBMIT);
 
     await page.click(Constants.SUBMIT); //submit after entering username and password
-    // await page.$eval(Constants.SUBMIT, elem => elem.click()); 
-    // await page.focus(Constants.SUBMIT);
-    console.log("here3")
-    // await page.keyboard.type('\n');
-    // console.log("Logged In")
+ 
     await page.waitForNavigation();
     // await page.waitForResponse(response => response.status() === 200);
 
     if (page.url() ==='https://online.adcb.com/ADCBIB/kdw#_frmLogout'){
       console.log("navigated")
-      await page.waitForSelector(Constants.INVLAID_CREDENTIALS_SELECTOR);
-      await page.screenshot({path: 'page.png'});
-      // await page.evaluate(()=>{
-        //  console.log("message",document.getElementById(Constants.INVLAID_CREDENTIALS_SELECTOR2).innerText)
-        await page.on('response', (response) => {
-          if (
-            response.request().method === 'POST' && 
-            response.url === `https://online.adcb.com/middleware/MWServlet`) 
-          {
-            expect(response.status).toEqual(200)
-          }
-        })
+      // await page.waitForSelector(Constants.INVLAID_CREDENTIALS_SELECTOR);
+
         // })
      }
     
