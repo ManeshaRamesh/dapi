@@ -1,20 +1,17 @@
 # PostRequest
-##### Login using a postrequest.
+Login using a postrequest.
 
-###### In order to this application, run the following commands in order: 
-npm install. 
+#### In order to this application, run the following commands in order: 
+1. npm install. 
 
-npm run build
+2. npm run build
 
-npm run start
-
-
-###### For live edits, you may run npm run watch instead of npm run build on another terminal
+3. npm run start
 
 
-###### On chrome navigate to https://localhost:3000/
+#### On chrome navigate to https://localhost:3000/
 
-### NOTES:
+#### NOTES:
 
 In order to implement a login page for ADCB Personal Internet Banking, in teh code I send two postrequests. The first one encrypts the username. The second one encrypts the username and password. 
  
